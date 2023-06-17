@@ -6,19 +6,11 @@ from tabulate import tabulate
 def imprimir_alunos():
     os.system('cls')
     try:
-        # Executar a consulta SELECT
         cursor.execute("SELECT * FROM alunos")
-        
-        # Obter todos os resultados da consulta
         rows = cursor.fetchall()
-
-        # Organizar os dados em uma lista de listas
         data = [[row[0], row[1], row[2]] for row in rows]
-
-        # Definir os cabeçalhos das colunas
         headers = ["ID", "Nome", "Sobrenome"]
 
-        # Imprimir os dados como uma tabela
         print(tabulate(data, headers, tablefmt="fancy_grid"))
         
     except (Exception, psycopg2.Error) as error:
